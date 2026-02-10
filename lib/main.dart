@@ -1,3 +1,4 @@
+import 'package:stride/screens/splash.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -14,6 +15,13 @@ class Main extends StatefulWidget {
 class _MainState extends State<Main> {
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return MaterialApp(
+      title: 'oilioFitness',
+      theme: ThemeData.dark().copyWith(
+        primaryColor: Color.fromARGB(255, 106, 167, 78),
+        scaffoldBackgroundColor: Colors.black,
+      ),
+      home: Scaffold(body: const Splash()),
+    );
   }
 }
