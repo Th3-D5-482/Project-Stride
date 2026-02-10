@@ -19,7 +19,6 @@ class _MainState extends State<Main> {
       title: 'oilioFitness',
       theme: ThemeData.dark().copyWith(
         primaryColor: Color.fromARGB(255, 106, 167, 78),
-        scaffoldBackgroundColor: Colors.black,
       ),
       home: Scaffold(body: const Splash()),
     );
