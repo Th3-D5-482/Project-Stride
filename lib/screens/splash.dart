@@ -36,7 +36,7 @@ class _SplashState extends State<Splash> {
             children: [
               Image.asset(
                 'assets/images/random/logo.png',
-                fit: BoxFit.contain,
+                fit: BoxFit.cover,
                 height: 190,
               ),
               const SizedBox(height: 20),
