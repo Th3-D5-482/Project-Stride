@@ -23,6 +23,16 @@ class _MainState extends State<Main> {
       title: 'oilioFitness',
       theme: ThemeData.dark().copyWith(
         primaryColor: Color.fromARGB(255, 106, 167, 78),
+        inputDecorationTheme: InputDecorationTheme(
+          filled: true,
+          // ignore: deprecated_member_use
+          fillColor: Colors.white.withOpacity(0.1),
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(8.0),
+            // ignore: deprecated_member_use
+            borderSide: BorderSide(color: Colors.white.withOpacity(0.1)),
+          ),
+        ),
       ),
       home: Scaffold(body: const Splash()),
     );
