@@ -32,6 +32,20 @@ class _MainState extends State<Main> {
             // ignore: deprecated_member_use
             borderSide: BorderSide(color: Colors.white.withOpacity(0.1)),
           ),
+          enabledBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(8.0),
+            // ignore: deprecated_member_use
+            borderSide: BorderSide(color: Colors.white.withOpacity(0.1)),
+          ),
+        ),
+        elevatedButtonTheme: ElevatedButtonThemeData(
+          style: ElevatedButton.styleFrom(
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(16.0),
+            ),
+            // ignore: deprecated_member_use
+            side: BorderSide(color: Colors.white.withOpacity(0.1)),
+          ),
         ),
       ),
       home: Scaffold(body: const Splash()),

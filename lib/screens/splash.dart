@@ -34,10 +34,10 @@ class _SplashState extends State<Splash> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Image.asset(
-                'assets/images/random/logo.png',
-                fit: BoxFit.cover,
-                height: 190,
+              CircleAvatar(
+                radius: 90,
+                backgroundColor: Colors.transparent,
+                backgroundImage: AssetImage('assets/images/icons/logo2.png'),
               ),
               const SizedBox(height: 20),
               Row(
