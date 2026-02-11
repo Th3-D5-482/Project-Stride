@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 class Login extends StatefulWidget {
@@ -9,7 +10,6 @@ class Login extends StatefulWidget {
 
 class _LoginState extends State<Login> {
   late TextEditingController _phoneController = TextEditingController();
-  bool isContinueEnabled = false;
   @override
   void initState() {
     _phoneController = TextEditingController();
@@ -121,7 +121,7 @@ class _LoginState extends State<Login> {
                 onPressed: () {},
                 style: ElevatedButton.styleFrom(
                   minimumSize: Size(double.infinity, 50),
-                  backgroundColor: Colors.grey,
+                  backgroundColor: Colors.blueAccent,
                 ),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -139,17 +139,16 @@ class _LoginState extends State<Login> {
                   ],
                 ),
               ),
-              Spacer(),
+              SizedBox(height: 40),
               ElevatedButton(
                 onPressed: () {},
                 style: ElevatedButton.styleFrom(
                   minimumSize: Size(double.infinity, 50),
-                  backgroundColor: isContinueEnabled
-                      ? Theme.of(context).primaryColor
-                      : Colors.grey,
+                  backgroundColor: Theme.of(context).primaryColor,
                 ),
                 child: Row(
                   children: [
+                    Spacer(),
                     Text(
                       'Continue',
                       style: TextStyle(
