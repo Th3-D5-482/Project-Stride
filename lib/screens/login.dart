@@ -12,16 +12,20 @@ class _LoginState extends State<Login> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: SingleChildScrollView(
-          child: SizedBox(
-            height: MediaQuery.of(context).size.height - 100,
-            child: const Center(
-              child: Text(
-                'Login Screen',
-                style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+        child: LayoutBuilder(
+          builder: (context, constraints) {
+            return SingleChildScrollView(
+              child: ConstrainedBox(
+                constraints: BoxConstraints(maxHeight: constraints.maxHeight),
+                child: const Center(
+                  child: Text(
+                    'Login Screen',
+                    style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                  ),
+                ),
               ),
-            ),
-          ),
+            );
+          },
         ),
       ),
     );
