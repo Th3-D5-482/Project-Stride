@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:stride/screens/auth/email.dart';
+import 'package:stride/screens/auth/opt.dart';
 
 class Phone extends StatefulWidget {
   const Phone({super.key});
@@ -56,7 +57,9 @@ class _PhoneState extends State<Phone> {
               Row(
                 children: [
                   IconButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
                     icon: Icon(Icons.arrow_back_ios_new_rounded, size: 28),
                   ),
                   Row(
@@ -182,7 +185,19 @@ class _PhoneState extends State<Phone> {
                       RegExp(r'^[0-9]+$').hasMatch(phone) &&
                       !isSequential(phone) &&
                       !isRepeatedNumber(phone)) {
-                    //Do something
+                    Navigator.of(context).push(
+                      PageRouteBuilder(
+                        pageBuilder: (context, animation, secondaryAnimation) =>
+                            Opt(),
+                        transitionDuration: Duration(milliseconds: 500),
+                        transitionsBuilder:
+                            (context, animation, secondaryAnimation, child) =>
+                                FadeTransition(
+                                  opacity: animation,
+                                  child: child,
+                                ),
+                      ),
+                    );
                   } else {
                     ScaffoldMessenger.of(context).showSnackBar(
                       SnackBar(
