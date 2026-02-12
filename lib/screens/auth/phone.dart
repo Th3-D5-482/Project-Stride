@@ -177,7 +177,7 @@ class _PhoneState extends State<Phone> {
                   ],
                 ),
               ),
-              SizedBox(height: 30),
+              SizedBox(height: 40),
               ElevatedButton(
                 onPressed: () {
                   final phone = phoneNumber.text.trim();
