@@ -1,25 +1,47 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:stride/screens/auth/email.dart';
 
-class Login extends StatefulWidget {
-  const Login({super.key});
+class Phone extends StatefulWidget {
+  const Phone({super.key});
 
   @override
-  State<Login> createState() => _LoginState();
+  State<Phone> createState() => _PhoneState();
 }
 
-class _LoginState extends State<Login> {
-  late TextEditingController _phoneController = TextEditingController();
+class _PhoneState extends State<Phone> {
+  late TextEditingController phoneNumber = TextEditingController();
+
+  bool isRepeatedNumber(String phone) {
+    return phone.split('').every((digit) => digit == phone[0]);
+  }
+
+  bool isSequential(String phone) {
+    bool ascending = true;
+    bool descending = true;
+    for (int i = 0; i < phone.length - 1; i++) {
+      int current = int.parse(phone[i]);
+      int next = int.parse(phone[i + 1]);
+      if (next != (current + 1) % 10) {
+        ascending = false;
+      }
+      if (next != (current - 1 + 10) % 10) {
+        descending = false;
+      }
+    }
+    return ascending || descending;
+  }
+
   @override
   void initState() {
-    _phoneController = TextEditingController();
+    phoneNumber = TextEditingController(text: "8472916350");
     super.initState();
   }
 
   @override
   void dispose() {
     super.dispose();
-    _phoneController.dispose();
+    phoneNumber.dispose();
   }
 
   @override
@@ -101,6 +123,7 @@ class _LoginState extends State<Login> {
                   SizedBox(width: 20),
                   Expanded(
                     child: TextField(
+                      controller: phoneNumber,
                       decoration: InputDecoration(
                         hintText: '000-000-0000',
                         prefixStyle: TextStyle(
@@ -111,6 +134,7 @@ class _LoginState extends State<Login> {
                         counterText: '',
                       ),
                       keyboardType: TextInputType.phone,
+                      inputFormatters: [FilteringTextInputFormatter.digitsOnly],
                       maxLength: 10,
                     ),
                   ),
@@ -118,7 +142,18 @@ class _LoginState extends State<Login> {
               ),
               SizedBox(height: 30),
               ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.of(context).push(
+                    PageRouteBuilder(
+                      pageBuilder: (context, animation, secondaryAnimation) =>
+                          Email(),
+                      transitionDuration: Duration(milliseconds: 500),
+                      transitionsBuilder:
+                          (context, animation, secondaryAnimation, child) =>
+                              FadeTransition(opacity: animation, child: child),
+                    ),
+                  );
+                },
                 style: ElevatedButton.styleFrom(
                   minimumSize: Size(double.infinity, 50),
                   backgroundColor: Colors.blueAccent,
@@ -141,7 +176,41 @@ class _LoginState extends State<Login> {
               ),
               SizedBox(height: 40),
               ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  final phone = phoneNumber.text.trim();
+                  if (phone.length == 10 &&
+                      RegExp(r'^[0-9]+$').hasMatch(phone) &&
+                      !isSequential(phone) &&
+                      !isRepeatedNumber(phone)) {
+                    //Do something
+                  } else {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(
+                        content: Row(
+                          children: [
+                            Icon(
+                              Icons.error_outline_rounded,
+                              color: Colors.white,
+                            ),
+                            SizedBox(width: 8),
+                            Text(
+                              'Enter a valid 10-digit phone number',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.w600,
+                              ),
+                            ),
+                          ],
+                        ),
+                        backgroundColor: Colors.red.shade400,
+                        behavior: SnackBarBehavior.floating,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(8.0),
+                        ),
+                      ),
+                    );
+                  }
+                },
                 style: ElevatedButton.styleFrom(
                   minimumSize: Size(double.infinity, 50),
                   backgroundColor: Theme.of(context).primaryColor,

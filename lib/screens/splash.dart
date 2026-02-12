@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:stride/screens/auth/login.dart';
+import 'package:stride/screens/auth/phone.dart';
 
 class Splash extends StatefulWidget {
   const Splash({super.key});
@@ -17,7 +17,7 @@ class _SplashState extends State<Splash> {
         // ignore: use_build_context_synchronously
         context,
         PageRouteBuilder(
-          pageBuilder: (context, animation, secondaryAnimation) => Login(),
+          pageBuilder: (context, animation, secondaryAnimation) => Phone(),
           transitionDuration: Duration(milliseconds: 500),
           transitionsBuilder: (context, animation, secondaryAnimation, child) =>
               FadeTransition(opacity: animation, child: child),
