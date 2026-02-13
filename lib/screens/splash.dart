@@ -13,7 +13,7 @@ class _SplashState extends State<Splash> {
   void initState() {
     super.initState();
     Future.delayed(Duration(seconds: 3), () {
-      Navigator.pushReplacement(
+      Navigator.push(
         // ignore: use_build_context_synchronously
         context,
         PageRouteBuilder(

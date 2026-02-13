@@ -1,11 +1,11 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:stride/firebase_options.dart';
-import 'package:stride/screens/splash.dart';
 import 'package:flutter/material.dart';
+import 'package:stride/screens/splash.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  runApp(const MaterialApp(home: Main()));
+  runApp(const Main());
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
 }
 
@@ -48,7 +48,7 @@ class _MainState extends State<Main> {
           ),
         ),
       ),
-      home: Scaffold(body: const Splash()),
+      home: const Splash(),
     );
   }
 }

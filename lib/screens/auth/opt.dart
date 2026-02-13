@@ -141,6 +141,7 @@ class _OptState extends State<Opt> {
                         ),
                         maxLength: 1,
                         keyboardType: TextInputType.number,
+                        textAlign: TextAlign.center,
                         onChanged: (value) {
                           if (value.length == 1) {
                             if (index < 3) {
@@ -203,31 +204,17 @@ class _OptState extends State<Opt> {
                                 ),
                       ),
                     );
-                  } else {
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      SnackBar(
-                        content: Row(
-                          children: [
-                            Icon(
-                              Icons.error_outline_rounded,
-                              color: Colors.white,
-                            ),
-                            SizedBox(width: 10),
-                            Text('Please enter the complete OTP.'),
-                          ],
-                        ),
-                        behavior: SnackBarBehavior.floating,
-                        backgroundColor: Colors.redAccent,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(8),
-                        ),
-                      ),
-                    );
                   }
                 },
                 style: ElevatedButton.styleFrom(
                   minimumSize: Size(double.infinity, 50),
-                  backgroundColor: Theme.of(context).primaryColor,
+                  backgroundColor:
+                      otpController1.text.isNotEmpty &&
+                          otpController2.text.isNotEmpty &&
+                          otpController3.text.isNotEmpty &&
+                          otpController4.text.isNotEmpty
+                      ? Theme.of(context).primaryColor
+                      : Colors.grey.shade700,
                 ),
                 child: Row(
                   children: [

@@ -192,7 +192,9 @@ class _PhoneState extends State<Phone> {
                 },
                 style: ElevatedButton.styleFrom(
                   minimumSize: Size(double.infinity, 50),
-                  backgroundColor: Theme.of(context).primaryColor,
+                  backgroundColor: phoneNumber.text.trim().isNotEmpty
+                      ? Theme.of(context).primaryColor
+                      : Colors.grey.shade700,
                 ),
                 child: Row(
                   children: [
