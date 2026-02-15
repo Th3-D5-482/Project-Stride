@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:stride/screens/profile.dart';
 import 'package:stride/screens/subscriptions.dart';
 
 class Home extends StatefulWidget {
@@ -15,6 +16,8 @@ class _HomeState extends State<Home> {
     return Scaffold(
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
+        // ignore: deprecated_member_use
+        backgroundColor: Colors.white.withOpacity(0.1),
         currentIndex: selectedIndex,
         onTap: (value) => setState(() => selectedIndex = value),
         selectedItemColor: Theme.of(context).primaryColor,
@@ -52,11 +55,35 @@ class MainHomePage extends StatefulWidget {
 class _MainHomePageState extends State<MainHomePage> {
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Text(
-        'Home Screen coming soon...',
-        style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-        textAlign: TextAlign.center,
+    return SafeArea(
+      child: SingleChildScrollView(
+        child: Padding(
+          padding: EdgeInsetsGeometry.all(16),
+          child: Column(
+            children: [
+              GestureDetector(
+                onTap: () {
+                  Navigator.of(context).push(
+                    PageRouteBuilder(
+                      pageBuilder: (context, animation, secondaryAnimation) =>
+                          Profile(),
+                      transitionDuration: Duration(microseconds: 500),
+                      transitionsBuilder:
+                          (context, animation, secondaryAnimation, child) =>
+                              FadeTransition(opacity: animation, child: child),
+                    ),
+                  );
+                },
+                child: CircleAvatar(
+                  radius: 25,
+                  // ignore: deprecated_member_use
+                  backgroundColor: Colors.white.withOpacity(0.1),
+                  child: Icon(Icons.person, size: 30),
+                ),
+              ),
+            ],
+          ),
+        ),
       ),
     );
   }
