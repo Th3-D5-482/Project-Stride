@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:stride/screens/home.dart';
+import 'package:stride/screens/navBar/home.dart';
 
 class TermsNConditions extends StatefulWidget {
   const TermsNConditions({super.key});

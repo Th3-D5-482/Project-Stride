@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:stride/screens/profile.dart';
-import 'package:stride/screens/subscriptions.dart';
+import 'package:stride/screens/profile/profile.dart';
+import 'package:stride/screens/navBar/subscriptions.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
